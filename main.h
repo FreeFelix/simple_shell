@@ -33,7 +33,9 @@ char *get_input(void);
 char **strings_tokenisation(char *command);
 int env_func(char **av);
 int kernel_s_call(char **av, char *pro_na);
-
+void fprintf(const char *msg);
+int _customcd(char **av);
+int _customhelp(char **av)
 /*
 int cd_func(char **args);
 
