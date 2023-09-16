@@ -19,7 +19,7 @@ if (!tokens2)
 perror("memory allocation failure token2");
 exit(EXIT_FAILURE);
 }
-token1 = strtok(command, "\t\n");
+token1 = strtok(command, "TOKENISES_ALL_DELIM");
 while (token1 != NULL)
 {
 token2[i] = token1;
@@ -34,7 +34,7 @@ perror("reallocation token failed");
 exit(EXIT_FAILURE);
 }
 }
-token1 = strtok(NULL, "\t\n");
+token1 = strtok(NULL, "TOKENISES_ALL_DELIM");
 }
 token2[i] = NULL;
 return (token2);
