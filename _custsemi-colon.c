@@ -1,25 +1,25 @@
 #include "main.h"
 /**
- * _custexecutecmd - fun is being executed
+ * custexecutecmd - fun is being executed
  * @cmdargs: command arguments
  *
  * Return: nothing
  */
-void _custexecutecmd(char **cmdargs)
+void custexecutecmd(char **cmdargs)
 {
-execvp(cmdargs[0], cmdargs);
+execve(cmdargs[0], cmdargs);
 perror("failed");
 exit(EXIT_FAILURE);
 }
 
 /**
- * _custpipe_func - customize number of pipe.
+ * custpipe_func - customize number of pipe.
  * @args: passes arguments to fun
  * @num_pipes: the number of pipes to use
  *
  * Return: integer is succesful
  */
-int _custsemicolon_func(char *args[], int num_pipes)
+int custsemicolon_func(char *args[], int num_pipes)
 {
 int i, j, scmdargcount;
 pid_t c1, c2;
@@ -56,7 +56,7 @@ exit(EXIT_FAILURE);
 }
 else if (c1 == 0)
 {
-_custexecutecmd(cmdargs_list[i]);
+custexecutecmd(cmdargs_list[i]);
 }
 c2 = fork();
 if (c2 < 0)
@@ -66,7 +66,7 @@ exit(EXIT_FAILURE);
 }
 else if (c2 == 0)
 {
-_custexecutecmd(cmdargs_list[i + 1]);
+custexecutecmd(cmdargs_list[i + 1]);
 fprintf(stderr, "No second command provided\n");
 exit(EXIT_FAILURE);
 }
