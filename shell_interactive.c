@@ -1,28 +1,33 @@
-#include "shell.h"
+#include "main.h"
 
 /**
- * interact_mode - UNIX command line interpreter
+ * interact_mode - definition for function
+ * for interactive mode
+ * @command: apps name identification
  *
  * Return: void
  */
-void interact_mode(void)
+void  interact_mode(char *command)
 {
-	char **av;
-	char *line;
-	int exec_c;
+char *c_input;
+char **args;
+int exec_status;
 
-	do-while {
-		free(line);
-		free(av);
-        
-        av = string_tokenisation(line);
-        line = get_input();
-        exec_c =   (av);
-        _putchar("simple_prompt$ "); /* print prompt symbol */
-		
-		if (!(status <= -1)
-		{
-			exit(status);
-		}
-	} do-while (status == -1);
+while (1)
+{
+write(0, "$ ", 2);
+line = get_input();
+args = strings_tokenisation(c_input);
+exec_status = exec_c(args, command);
+free(c_input);
+free(args);
+if (exec_status >= 0)
+{
+exit(exec_status);
+}
+else
+{
+continue;
+}
+}
 }

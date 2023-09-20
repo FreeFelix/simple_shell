@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * exec_c -  Execute a command and handle errors
+ * exec1_c -  Execute a command and handle errors
  * @cargs: passed argument
  *
  * No return type

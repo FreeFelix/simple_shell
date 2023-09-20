@@ -27,7 +27,7 @@ i++;
 if (i >= buf_size)
 {
 buf_size += buf_size;
-token2 = realloc(token2, buf_size * sizeof(char*));
+token2 = realloc(token2, buf_size *sizeof(char *));
 if (token2 == NULL)
 {
 perror("reallocation token failed");

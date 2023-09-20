@@ -39,7 +39,8 @@ break;
 for (i = 0; i < num_pipes; i++)
 {
 cmdargs_list[i] = malloc((i + 1) * sizeof(char *));
-for (j = 0; j < i; j++) {
+for (j = 0; j < i; j++)
+{
 cmdargs_list[i][j] = args[j];
 }
 cmdargs_list[i][i] = NULL;

@@ -27,5 +27,10 @@ void fprintf(const char *msg);
 int _customcd(char **av);
 int _customhelp(char **av);
 int cd_fun(char **av);
+void exec1_c(char **cargs);
+void create_pipe(int *fd_p);
+void close_pipe(int *fd_p);
+void exec_f_c(int *fd_p, char **f_command);
+void exec_s_c(int *fd_p, char **s_command);
 int ext(char **av)
 #endif
