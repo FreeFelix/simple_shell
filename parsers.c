@@ -17,7 +17,7 @@ while (av[i] != NULL)
 {
 if (strcmp(av[i], '|') == 0)
 {
-	return (pipe_func(av));
+	return (create_pipe(av));
 }
 if ((strcmp(av[i], ":") == 0) || (strcmp(av[i], "&&") == 0))
 {
