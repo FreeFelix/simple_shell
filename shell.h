@@ -112,10 +112,10 @@ typedef struct builtin
 
 
 /* toem_shloop.c */
-int hsh(info_t *, char **);
-int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+int hsh(info_t *info, char **av);
+int find_builtin(info_t *info);
+void find_cmd(info_t *info);
+void fork_cmd(info_t *info);
 
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
@@ -132,16 +132,16 @@ int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
 /* toem_string.c */
-int _strlen(char *);
-int _strcmp(char *, char *);
-char *starts_with(const char *, const char *);
-char *_strcat(char *, char *);
+int string_length(char *s);
+int string_compare(char *s1, char *s2);
+char *starts_with_string(const char *haystack, const char *needle);
+char *string_concatenate(char *dest, char *src);
 
 /* toem_string1.c */
-char *_strcpy(char *, char *);
-char *_strdup(const char *);
-void _puts(char *);
-int _putchar(char);
+char *copy_string(char *destination, char *source);
+char *duplicate_string(const char *str);
+void print_string(char *str);
+int _putchar(char character);
 
 /* toem_exits.c */
 char *_strncpy(char *, char *, int);
@@ -149,8 +149,8 @@ char *_strncat(char *, char *, int);
 char *_strchr(char *, char);
 
 /* toem_tokenizer.c */
-char **strtow(char *, char *);
-char **strtow2(char *, char);
+char **split_string(char *, char *);
+char **split_string_v2(char *, char);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
@@ -162,7 +162,7 @@ int bfree(void **);
 
 /* toem_atoi.c */
 int interactive(info_t *);
-int is_delim(char, char *);
+int is_delimiter(char, char *);
 int _isalpha(int);
 int _atoi(char *);
 
@@ -226,10 +226,11 @@ list_t *node_starts_with(list_t *, char *, char);
 ssize_t get_node_index(list_t *, list_t *);
 
 /* toem_vars.c */
-int is_chain(info_t *, char *, size_t *);
-void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
-int replace_vars(info_t *);
-int replace_string(char **, char *);
+int is_chain_delimiter(info_t *, char *, size_t *);
+void should_continue_chaining(info_t *, char *, size_t *, size_t, size_t);
+int aliases(info_t *);
+int variables(info_t *);
+int string_value(char **, char *);
 
 #endif
+

@@ -4,7 +4,7 @@
  * input_buf - buffers chained commands
  * @info: parameter struct
  * @buf: address of buffer
- * @len: address of len var
+ * @len: address of len variable
  *
  * Return: bytes read
  */
@@ -15,7 +15,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 
 	if (!*len) /* if nothing left in the buffer, fill it */
 	{
-		/*bfree((void **)info->cmd_buf);*/
+		/* bfree((void **)info->cmd_buf); */
 		free(*buf);
 		*buf = NULL;
 		signal(SIGINT, sigintHandler);
@@ -61,15 +61,15 @@ ssize_t get_input(info_t *info)
 	r = input_buf(info, &buf, &len);
 	if (r == -1) /* EOF */
 		return (-1);
-	if (len)	/* we have commands left in the chain buffer */
+	if (len) /* we have commands left in the chain buffer */
 	{
 		j = i; /* init new iterator to current buf position */
 		p = buf + i; /* get pointer for return */
 
-		check_chain(info, buf, &j, i, len);
+		should_continue_chaining(info, buf, &j, i, len);
 		while (j < len) /* iterate to semicolon or end */
 		{
-			if (is_chain(info, buf, &j))
+			if (is_chain_delimiter(info, buf, &j))
 				break;
 			j++;
 		}
@@ -82,7 +82,7 @@ ssize_t get_input(info_t *info)
 		}
 
 		*buf_p = p; /* pass back pointer to current command position */
-		return (_strlen(p)); /* return length of current command */
+		return (string_length(p)); /* return length of current command */
 	}
 
 	*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
@@ -164,7 +164,8 @@ int _getline(info_t *info, char **ptr, size_t *length)
  */
 void sigintHandler(__attribute__((unused))int sig_num)
 {
-	_puts("\n");
-	_puts("$ ");
+	print_string("\n");
+	print_string("$ ");
 	_putchar(BUF_FLUSH);
 }
+

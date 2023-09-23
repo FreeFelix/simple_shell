@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * get_history_file - gets the history file
- * @info: parameter struct
+ * get_history_file - Retrieves the history file path.
+ * @info: Parameter struct.
  *
- * Return: allocated string containg history file
+ * Return: Allocated string containing the history file path.
  */
 
 char *get_history_file(info_t *info)
@@ -14,21 +14,22 @@ char *get_history_file(info_t *info)
 	dir = _getenv(info, "HOME=");
 	if (!dir)
 		return (NULL);
-	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
+	buf = malloc(sizeof(char) * (string_length(dir) + string_length
+				(HIST_FILE) + 2));
 	if (!buf)
 		return (NULL);
 	buf[0] = 0;
-	_strcpy(buf, dir);
-	_strcat(buf, "/");
-	_strcat(buf, HIST_FILE);
+	copy_string(buf, dir);
+	string_concatenate(buf, "/");
+	string_concatenate(buf, HIST_FILE);
 	return (buf);
 }
 
 /**
- * write_history - creates a file, or appends to an existing file
- * @info: the parameter struct
+ * write_history - Creates a file or appends to an existing file.
+ * @info: The parameter struct.
  *
- * Return: 1 on success, else -1
+ * Return: 1 on success, else -1.
  */
 int write_history(info_t *info)
 {
@@ -54,10 +55,10 @@ int write_history(info_t *info)
 }
 
 /**
- * read_history - reads history from file
- * @info: the parameter struct
+ * read_history - Reads history from a file.
+ * @info: The parameter struct.
  *
- * Return: histcount on success, 0 otherwise
+ * Return: histcount on success, 0 otherwise.
  */
 int read_history(info_t *info)
 {
@@ -103,10 +104,10 @@ int read_history(info_t *info)
 }
 
 /**
- * build_history_list - adds entry to a history linked list
+ * build_history_list - Adds an entry to a history linked list.
  * @info: Structure containing potential arguments. Used to maintain
- * @buf: buffer
- * @linecount: the history linecount, histcount
+ * @buf: Buffer
+ * @linecount: The history linecount, histcount
  *
  * Return: Always 0
  */
@@ -124,10 +125,10 @@ int build_history_list(info_t *info, char *buf, int linecount)
 }
 
 /**
- * renumber_history - renumbers the history linked list after changes
+ * renumber_history - Renumbers the history linked list after changes.
  * @info: Structure containing potential arguments. Used to maintain
  *
- * Return: the new histcount
+ * Return: The new histcount
  */
 int renumber_history(info_t *info)
 {
@@ -141,3 +142,4 @@ int renumber_history(info_t *info)
 	}
 	return (info->histcount = i);
 }
+
