@@ -74,7 +74,9 @@ $ ./hsh
 hsh main.c shell.c
 
 ($) exit
+
 $
+
 Non-Interactive Mode
 
 $ echo "/bin/ls" | ./hsh
