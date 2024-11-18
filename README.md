@@ -82,7 +82,9 @@ hsh main.c shell.c
 
 $
 $ cat test_ls | ./hsh
+
 hsh main.c shell.c
+
 hsh main.c shell.c
 $
 
